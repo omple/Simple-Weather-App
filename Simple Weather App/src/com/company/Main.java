@@ -9,6 +9,7 @@ import java.net.*;
 public class Main {
 
     public static void main(String[] args) throws Exception{
+        //weather API that I am using https://openweathermap.org/
         String apiKey = "105e15195f64a14d618ca02d48c5e213";
         String cityID = "1006984"; //East London
 
