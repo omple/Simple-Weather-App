@@ -9,24 +9,37 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class DataAPI {
-    public static JsonObject callAPI(){
+public class DataAPI{
+
+    String location;
+    JsonObject weatherFile;
+
+    public DataAPI(String locationID){
+        this.location = locationID;
+        this.weatherFile = callAPI();
+    }
+
+
+    public JsonObject callAPI() {
         // weather API that I am using https://openweathermap.org/
         String apiKey = "105e15195f64a14d618ca02d48c5e213";
-        String cityID = "1006984"; //East London
+        String cityID = this.location; //East London
 
-        // String urlString = "api.openweathermap.org/data/2.5/weather?id=" + cityID + "&appid=" + apiKey;
-        // System.out.println(urlString);
+        String urlString = "http://api.openweathermap.org/data/2.5/weather?id=" + cityID + "&appid=" + apiKey;
+        //System.out.println(urlString);
 
         // testing with ISS API to test out API code
-        String urlString = "http://api.open-notify.org/iss-now.json";
+        //String urlString = "http://api.open-notify.org/iss-now.json";
 
 
         // code to connect to url and code to convert json object to data from user Scott, https://stackoverflow.com/a/59279251
         // Connect to the URL using java's native library
         URL url = null;
+
         try {
+            //System.out.println(urlString);
             url = new URL(urlString);
+            //System.out.println(url);
             InputStream is = url.openStream();
             String jsonFile = new String(is.readAllBytes());
 
@@ -46,4 +59,17 @@ public class DataAPI {
 
         return null;
     }
+
+    public JsonObject getWeatherFile(){
+        return weatherFile;
+    }
+
+    public JsonElement getTemp(){
+        return weatherFile.get("main");
+    }
+
+    public JsonElement getWeather(){
+        return weatherFile.get("weather").getAsJsonArray().get(0);
+    }
+
 }

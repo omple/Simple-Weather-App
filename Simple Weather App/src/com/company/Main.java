@@ -8,6 +8,15 @@ import java.net.*;
 public class Main {
 
     public static void main(String[] args) throws Exception{
-        System.out.println(DataAPI.callAPI());
+        DataAPI data = new DataAPI("1006984");
+
+        System.out.println(data.getWeatherFile());
+        JsonElement locationWeather = data.getWeather();
+        JsonElement locationTemp = data.getTemp();
+
+        System.out.println(locationTemp);
+        System.out.println(locationWeather);
+
+
     }
 }
