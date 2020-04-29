@@ -17,6 +17,7 @@ public class Main {
         System.out.println(locationTemp);
         System.out.println(locationWeather);
 
-
+        FindCity.readConsole();
+        FindCity.findCityID();
     }
 }
