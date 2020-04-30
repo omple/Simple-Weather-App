@@ -8,9 +8,12 @@ import java.net.*;
 public class Main {
 
     public static void main(String[] args) throws Exception{
-        DataAPI data = new DataAPI("46037");
 
         try{
+            String locationZip = CityFind.readConsole();
+
+            DataAPI data = new DataAPI(locationZip);
+
             System.out.println(data.getWeatherFile());
             JsonElement locationWeather = data.getWeather();
             JsonElement locationTemp = data.getTemp();
