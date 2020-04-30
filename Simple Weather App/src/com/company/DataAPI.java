@@ -14,8 +14,8 @@ public class DataAPI{
     String location;
     JsonObject weatherFile;
 
-    public DataAPI(String locationID){
-        this.location = locationID;
+    public DataAPI(String zipCode){
+        this.location = zipCode;
         this.weatherFile = callAPI();
     }
 
@@ -23,9 +23,9 @@ public class DataAPI{
     public JsonObject callAPI() {
         // weather API that I am using https://openweathermap.org/
         String apiKey = "105e15195f64a14d618ca02d48c5e213";
-        String cityID = this.location; //East London
 
-        String urlString = "http://api.openweathermap.org/data/2.5/weather?id=" + cityID + "&appid=" + apiKey;
+        //api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
+        String urlString = "https://api.openweathermap.org/data/2.5/weather?zip=" + location + "&appid=" + apiKey;
         //System.out.println(urlString);
 
         // testing with ISS API to test out API code
@@ -70,6 +70,10 @@ public class DataAPI{
 
     public JsonElement getWeather(){
         return weatherFile.get("weather").getAsJsonArray().get(0);
+    }
+
+    public JsonElement getAreaName(){
+        return weatherFile.get("name");
     }
 
 }
