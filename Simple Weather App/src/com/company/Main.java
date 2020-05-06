@@ -26,6 +26,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        GUI gui = new GUI();
 
     }
 }
