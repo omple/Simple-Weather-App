@@ -9,6 +9,8 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
 
+        GUI gui = new GUI();
+/*
         try{
             String locationZip = CityFind.readConsole();
 
@@ -25,8 +27,8 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+*/
 
-        GUI gui = new GUI();
 
     }
 }

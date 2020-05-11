@@ -13,6 +13,7 @@ public class DataAPI{
 
     String location;
     JsonObject weatherFile;
+    JsonObject temperature;
 
     public DataAPI(String zipCode){
         this.location = zipCode;
@@ -47,6 +48,8 @@ public class DataAPI{
             JsonElement parsedFile = JsonParser.parseString(jsonFile);
             JsonObject objectFile = parsedFile.getAsJsonObject();
 
+            temperature = objectFile.get("main").getAsJsonObject();
+
             return objectFile;
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -60,20 +63,23 @@ public class DataAPI{
         return null;
     }
 
-    public JsonObject getWeatherFile(){
-        return weatherFile;
+    public String getWeatherFile(){
+        return String.valueOf(weatherFile);
     }
 
-    public JsonElement getTemp(){
-        return weatherFile.get("main");
+    public String getTemp(){
+        return String.valueOf(weatherFile.get("temp"));
     }
 
-    public JsonElement getWeather(){
-        return weatherFile.get("weather").getAsJsonArray().get(0);
+    public String getWeather(){
+        return String.valueOf(weatherFile.get("weather").getAsJsonArray().get(0));
     }
 
-    public JsonElement getAreaName(){
-        return weatherFile.get("name");
+    public String getAreaName(){
+        return String.valueOf(weatherFile.get("name"));
     }
 
 }
+
+// example call for looking
+// {"coord":{"lon":-85.96,"lat":39.96},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],"base":"stations","main":{"temp":280.87,"feels_like":275.13,"temp_min":280.37,"temp_max":281.48,"pressure":1023,"humidity":65},"visibility":16093,"wind":{"speed":5.7,"deg":290},"clouds":{"all":90},"dt":1589219934,"sys":{"type":1,"id":4965,"country":"US","sunrise":1589193124,"sunset":1589244505},"timezone":-14400,"id":0,"name":"Fishers","cod":200}
