@@ -7,12 +7,13 @@ import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener {
     private JFrame jFrame;
-    private static int HEIGHT = 1000;
-    private static int WIDTH = 1000;
+    private static int HEIGHT = 300;
+    private static int WIDTH = 400;
     private static JTextField jTextField;
     private static JButton continueButton;
     private static String zipCode;
     private static JLabel weather;
+    private static JLabel cityName;
 
     private final String stringDigit = "0123456789";
 
@@ -22,20 +23,22 @@ public class GUI implements ActionListener {
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        jFrame.setSize(WIDTH,HEIGHT);
-        jFrame.setResizable(true);
-        jFrame.setLocation(400,400);
 
         jFrame.setLayout(new FlowLayout());
         jTextField = new JTextField("",10);
         continueButton = new JButton("Find Weather");
+        cityName = new JLabel("City Name");
         weather = new JLabel("Temp");
 
         jFrame.add(jTextField);
         jFrame.add(continueButton);
+        jFrame.add(cityName);
         jFrame.add(weather);
 
-        jFrame.pack();
+        jFrame.setSize(WIDTH,HEIGHT);
+        jFrame.setLocation(400,400);
+        jFrame.setResizable(false);
+
 
         continueButton.addActionListener(this);
 
@@ -59,7 +62,8 @@ public class GUI implements ActionListener {
         if(isFormated){
             DataAPI data = new DataAPI(zipCode);
             System.out.println(data.getTemp());
-            weather.setText(data.getTemp());
+            cityName.setText("City: " + data.getAreaName());
+            weather.setText("Temperature: " + data.getTemp() + "F");
         }
 
     }

@@ -68,7 +68,11 @@ public class DataAPI{
     }
 
     public String getTemp(){
-        return String.valueOf(weatherFile.get("temp"));
+        String tempNow = String.valueOf(temperature.get("temp"));
+        //System.out.println(tempNow);
+        Float converted =Float.parseFloat(tempNow);
+
+        return String.valueOf(TempConvert.KToF(converted));
     }
 
     public String getWeather(){
