@@ -69,14 +69,14 @@ public class DataAPI{
 
     public String getTemp(){
         String tempNow = String.valueOf(temperature.get("temp"));
-        //System.out.println(tempNow);
-        Float converted =Float.parseFloat(tempNow);
+        System.out.println(tempNow);
+        Float converted = Float.parseFloat(tempNow);
 
-        return String.valueOf(TempConvert.KToF(converted));
+        return String.valueOf(Math.round(TempConvert.KToF(converted)));
     }
 
-    public String getWeather(){
-        return String.valueOf(weatherFile.get("weather").getAsJsonArray().get(0));
+    public String getDescription(){
+        return String.valueOf(weatherFile.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("description"));
     }
 
     public String getAreaName(){

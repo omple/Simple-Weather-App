@@ -1,7 +1,7 @@
 package com.company;
 
 public class TempConvert {
-    public static int KToF(float temp){
-        return (int) (1.8 * (temp - 273) + 32);
+    public static float KToF(float temp){
+        return (float) (1.8 * (temp - 273) + 32);
     }
 }

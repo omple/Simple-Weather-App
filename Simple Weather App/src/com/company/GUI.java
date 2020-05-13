@@ -12,8 +12,9 @@ public class GUI implements ActionListener {
     private static JTextField jTextField;
     private static JButton continueButton;
     private static String zipCode;
-    private static JLabel weather;
+    private static JLabel temp;
     private static JLabel cityName;
+    private static JLabel description;
 
     private final String stringDigit = "0123456789";
 
@@ -24,16 +25,18 @@ public class GUI implements ActionListener {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
-        jFrame.setLayout(new FlowLayout());
+        jFrame.setLayout(new GridLayout(3,2,10,20));
         jTextField = new JTextField("",10);
         continueButton = new JButton("Find Weather");
         cityName = new JLabel("City Name");
-        weather = new JLabel("Temp");
+        temp = new JLabel("Temp");
+        description = new JLabel("Weather");
 
         jFrame.add(jTextField);
         jFrame.add(continueButton);
         jFrame.add(cityName);
-        jFrame.add(weather);
+        jFrame.add(temp);
+        jFrame.add(description);
 
         jFrame.setSize(WIDTH,HEIGHT);
         jFrame.setLocation(400,400);
@@ -61,9 +64,10 @@ public class GUI implements ActionListener {
 
         if(isFormated){
             DataAPI data = new DataAPI(zipCode);
-            System.out.println(data.getTemp());
+            //System.out.println(data.getTemp());
             cityName.setText("City: " + data.getAreaName());
-            weather.setText("Temperature: " + data.getTemp() + "F");
+            temp.setText("Temperature: " + data.getTemp() + "F");
+            description.setText("Description: " + data.getDescription());
         }
 
     }
