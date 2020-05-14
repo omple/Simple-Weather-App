@@ -13,6 +13,9 @@ public class GUI implements ActionListener {
     private static JButton continueButton;
     private static String zipCode;
     private static JLabel temp;
+    private static JLabel feelsLike;
+    private static JLabel todayMax;
+    private static JLabel todayMin;
     private static JLabel cityName;
     private static JLabel description;
 
@@ -25,18 +28,26 @@ public class GUI implements ActionListener {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
-        jFrame.setLayout(new GridLayout(3,2,10,20));
+        jFrame.setLayout(new GridLayout(4,2,10,20));
         jTextField = new JTextField("",10);
         continueButton = new JButton("Find Weather");
         cityName = new JLabel("City Name");
         temp = new JLabel("Temp");
+        feelsLike = new JLabel("Feels like");
+        todayMax = new JLabel("Max");
+        todayMin = new JLabel("Min");
         description = new JLabel("Weather");
 
         jFrame.add(jTextField);
         jFrame.add(continueButton);
         jFrame.add(cityName);
-        jFrame.add(temp);
         jFrame.add(description);
+        jFrame.add(temp);
+        jFrame.add(feelsLike);
+        jFrame.add(todayMin);
+        jFrame.add(todayMax);
+
+
 
         jFrame.setSize(WIDTH,HEIGHT);
         jFrame.setLocation(400,400);
@@ -67,6 +78,9 @@ public class GUI implements ActionListener {
             //System.out.println(data.getTemp());
             cityName.setText("City: " + data.getAreaName());
             temp.setText("Temperature: " + data.getTemp() + "F");
+            feelsLike.setText("Feels like: " + data.getFeelsLike() + "F");
+            todayMin.setText("Min: " + data.getLow() + "F");
+            todayMax.setText("Max: " + data.getHigh() + "F");
             description.setText("Description: " + data.getDescription());
         }
 

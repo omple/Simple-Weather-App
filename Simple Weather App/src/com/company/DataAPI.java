@@ -69,7 +69,30 @@ public class DataAPI{
 
     public String getTemp(){
         String tempNow = String.valueOf(temperature.get("temp"));
-        System.out.println(tempNow);
+        //System.out.println(tempNow);
+        Float converted = Float.parseFloat(tempNow);
+
+        return String.valueOf(Math.round(TempConvert.KToF(converted)));
+    }
+    public String getFeelsLike(){
+        String tempNow = String.valueOf(temperature.get("feels_like"));
+        //System.out.println(tempNow);
+        Float converted = Float.parseFloat(tempNow);
+
+        return String.valueOf(Math.round(TempConvert.KToF(converted)));
+    }
+
+    public String getLow(){
+        String tempNow = String.valueOf(temperature.get("temp_min"));
+        //System.out.println(tempNow);
+        Float converted = Float.parseFloat(tempNow);
+
+        return String.valueOf(Math.round(TempConvert.KToF(converted)));
+    }
+
+    public String getHigh(){
+        String tempNow = String.valueOf(temperature.get("temp_max"));
+        //System.out.println(tempNow);
         Float converted = Float.parseFloat(tempNow);
 
         return String.valueOf(Math.round(TempConvert.KToF(converted)));
