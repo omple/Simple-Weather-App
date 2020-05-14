@@ -18,6 +18,7 @@ public class GUI implements ActionListener {
     private static JLabel todayMin;
     private static JLabel cityName;
     private static JLabel description;
+    private static JLabel descript2;
 
     private final String stringDigit = "0123456789";
 
@@ -28,7 +29,7 @@ public class GUI implements ActionListener {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
-        jFrame.setLayout(new GridLayout(4,2,10,20));
+        jFrame.setLayout(new GridLayout(5,2,10,20));
         jTextField = new JTextField("",10);
         continueButton = new JButton("Find Weather");
         cityName = new JLabel("City Name");
@@ -37,11 +38,13 @@ public class GUI implements ActionListener {
         todayMax = new JLabel("Max");
         todayMin = new JLabel("Min");
         description = new JLabel("Weather");
+        descript2 = new JLabel("Description");
 
         jFrame.add(jTextField);
         jFrame.add(continueButton);
         jFrame.add(cityName);
         jFrame.add(description);
+        jFrame.add(descript2);
         jFrame.add(temp);
         jFrame.add(feelsLike);
         jFrame.add(todayMin);
@@ -81,7 +84,8 @@ public class GUI implements ActionListener {
             feelsLike.setText("Feels like: " + data.getFeelsLike() + "F");
             todayMin.setText("Min: " + data.getLow() + "F");
             todayMax.setText("Max: " + data.getHigh() + "F");
-            description.setText("Description: " + data.getDescription());
+            description.setText("Weather: " + data.getMainDescription());
+            descript2.setText("Description: " + data.getDescription());
         }
 
     }

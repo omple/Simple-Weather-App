@@ -27,6 +27,7 @@ public class DataAPI{
 
         //api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
         String urlString = "https://api.openweathermap.org/data/2.5/weather?zip=" + location + "&appid=" + apiKey;
+        // api call example https://api.openweathermap.org/data/2.5/weather?zip=46037&appid=105e15195f64a14d618ca02d48c5e213
         //System.out.println(urlString);
 
         // testing with ISS API to test out API code
@@ -96,6 +97,9 @@ public class DataAPI{
         Float converted = Float.parseFloat(tempNow);
 
         return String.valueOf(Math.round(TempConvert.KToF(converted)));
+    }
+    public String getMainDescription(){
+        return String.valueOf(weatherFile.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("main"));
     }
 
     public String getDescription(){
