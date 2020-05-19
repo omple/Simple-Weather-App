@@ -42,6 +42,8 @@ public class DataAPI{
             //System.out.println(urlString);
             url = new URL(urlString);
             //System.out.println(url);
+
+            //opens connection and saves data as a string, https://stackoverflow.com/a/59279251 shows how to open a stream and how to parse the file
             InputStream is = url.openStream();
             String jsonFile = new String(is.readAllBytes());
 

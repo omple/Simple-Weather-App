@@ -23,7 +23,7 @@ public class GUI implements ActionListener {
     public GUI(){
         jFrame = new JFrame();
 
-        jTextField = new JTextField("",10);
+        jTextField = new JTextField("Enter zipcode:",10);
         continueButton = new JButton("Find Weather");
         cityName = new JLabel("City Name");
         temp = new JLabel("Temp");
